@@ -8,8 +8,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class EaseBuzzPaymentRepository {
-  static String key = kDebugMode ? "38PDKTCJ9" : "3X7LDAFCGV";
-  static String salt = kDebugMode ? "K77839NQ4" : "76NN9X04A0";
+  static String key = kDebugMode ? "Test key" : "Production key";
+  static String salt = kDebugMode ? "Test salt" : "Production salt";
   static final EasebuzzFlutterSdk _easebuzzFlutterPlugin = EasebuzzFlutterSdk();
 
   Future<void> initiatePayment({
@@ -27,7 +27,7 @@ class EaseBuzzPaymentRepository {
       phone: "9999999999",
       surl: "https://your-success-url.com",
       furl: "https://your-failure-url.com",
-      splitPayments: jsonEncode({"HUM": amount}),
+      splitPayments: jsonEncode({"Your_label": amount}),
       key: EaseBuzzPaymentRepository.key,
     );
 

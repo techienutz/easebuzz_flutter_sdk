@@ -1,6 +1,7 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
 import 'easebuzz_flutter_sdk_method_channel.dart';
-import 'package:easebuzz_flutter_sdk/models/easebuzz_payment_model.dart';
+import 'models/easebuzz_payment_model.dart';
 
 abstract class EasebuzzFlutterSDKPlatform extends PlatformInterface {
   EasebuzzFlutterSDKPlatform() : super(token: _token);
@@ -18,7 +19,7 @@ abstract class EasebuzzFlutterSDKPlatform extends PlatformInterface {
   }
 
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode) {
+      String accessKey, String payMode,) {
     throw UnimplementedError('payWithEasebuzz() has not been implemented.');
   }
 

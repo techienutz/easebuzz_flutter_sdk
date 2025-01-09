@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:html' as web;
 import 'dart:js_util';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'easebuzz_flutter_sdk_platform_interface.dart';
@@ -16,7 +17,7 @@ class EasebuzzFlutterSdkWeb extends EasebuzzFlutterSDKPlatform {
 
   @override
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode) async {
+      String accessKey, String payMode,) async {
     // Existing implementation
     final completer = Completer<Map<String, dynamic>?>();
     void onResponse(dynamic response) {
@@ -63,15 +64,15 @@ class EasebuzzFlutterSdkWeb extends EasebuzzFlutterSDKPlatform {
     try {
       // Build the hash sequence
       String valueOrBlank(String? value) =>
-          value?.isNotEmpty == true ? value! : '';
+          (value?.isNotEmpty ?? false) ? value! : '';
       final data =
-          "$key|${paymentModel.txnid}|${paymentModel.amount}|${paymentModel.productinfo}|"
-          "${paymentModel.firstname}|${paymentModel.email}|"
-          "${valueOrBlank(paymentModel.udf1)}|${valueOrBlank(paymentModel.udf2)}|"
-          "${valueOrBlank(paymentModel.udf3)}|${valueOrBlank(paymentModel.udf4)}|"
-          "${valueOrBlank(paymentModel.udf5)}|${valueOrBlank(paymentModel.udf6)}|"
-          "${valueOrBlank(paymentModel.udf7)}||"
-          "||$salt";
+          '$key|${paymentModel.txnid}|${paymentModel.amount}|${paymentModel.productinfo}|'
+          '${paymentModel.firstname}|${paymentModel.email}|'
+          '${valueOrBlank(paymentModel.udf1)}|${valueOrBlank(paymentModel.udf2)}|'
+          '${valueOrBlank(paymentModel.udf3)}|${valueOrBlank(paymentModel.udf4)}|'
+          '${valueOrBlank(paymentModel.udf5)}|${valueOrBlank(paymentModel.udf6)}|'
+          '${valueOrBlank(paymentModel.udf7)}||'
+          '||$salt';
 
       // Get CryptoJS from window object
       final cryptoJS = getProperty(web.window, 'CryptoJS');
@@ -84,18 +85,18 @@ class EasebuzzFlutterSdkWeb extends EasebuzzFlutterSDKPlatform {
 
       return hashString;
     } catch (e) {
-      print('Error generating hash on web: $e');
+      debugPrint('Error generating hash on web: $e');
       return null;
     }
   }
 
   Map<String, dynamic> jsObjectToMap(Object jsObject) {
-    final Map<String, dynamic> map = {};
+    final map = <String, dynamic>{};
     final keys = objectKeys(jsObject);
-    for (var key in keys) {
+    for (final key in keys) {
       if (key is String) {
         map[key] = getProperty(jsObject, key);
-     }
+      }
     }
     return map;
   }

@@ -1,5 +1,5 @@
-import 'package:easebuzz_flutter_sdk/models/easebuzz_payment_model.dart';
 import 'easebuzz_flutter_sdk_platform_interface.dart';
+import 'models/easebuzz_payment_model.dart';
 
 class EasebuzzFlutterSdk {
   static final EasebuzzFlutterSdk _instance = EasebuzzFlutterSdk._internal();
@@ -13,14 +13,12 @@ class EasebuzzFlutterSdk {
   /// Initiates a payment through Easebuzz
   /// This method is supported on all platforms (Android, iOS, and Web)
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode) {
+      String accessKey, String payMode,) {
     return EasebuzzFlutterSDKPlatform.instance
         .payWithEasebuzz(accessKey, payMode);
   }
 
   /// Generates a hash for the payment transaction
-  /// Note: This method is only available for Android and iOS platforms
-  /// Throws UnsupportedError when called on Web platform
   Future<String?> generateHash({
     required EasebuzzPaymentModel paymentModel,
     required String key,

@@ -127,7 +127,7 @@ class EasebuzzPaymentModel {
 
   // Convert model to JSON
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {
+    final data = <String, dynamic>{
       'key': key,
       'txnid': txnid,
       'amount': amount,

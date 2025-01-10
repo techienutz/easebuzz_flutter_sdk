@@ -13,7 +13,9 @@ class EasebuzzFlutterSdk {
   /// Initiates a payment through Easebuzz
   /// This method is supported on all platforms (Android, iOS, and Web)
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode,) {
+    String accessKey,
+    String payMode,
+  ) {
     return EasebuzzFlutterSDKPlatform.instance
         .payWithEasebuzz(accessKey, payMode);
   }

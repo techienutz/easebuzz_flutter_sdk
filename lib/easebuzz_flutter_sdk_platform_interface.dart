@@ -19,7 +19,9 @@ abstract class EasebuzzFlutterSDKPlatform extends PlatformInterface {
   }
 
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode,) {
+    String accessKey,
+    String payMode,
+  ) {
     throw UnimplementedError('payWithEasebuzz() has not been implemented.');
   }
 

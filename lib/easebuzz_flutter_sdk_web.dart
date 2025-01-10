@@ -17,7 +17,9 @@ class EasebuzzFlutterSdkWeb extends EasebuzzFlutterSDKPlatform {
 
   @override
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode,) async {
+    String accessKey,
+    String payMode,
+  ) async {
     // Existing implementation
     final completer = Completer<Map<String, dynamic>?>();
     void onResponse(dynamic response) {

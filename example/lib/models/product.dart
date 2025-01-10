@@ -28,4 +28,4 @@ class Product {
       rating: json['rating'],
     );
   }
-} 
+}

@@ -26,9 +26,10 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AspectRatio(
-              aspectRatio: isDesktop ? 16/9 : 1,
+              aspectRatio: isDesktop ? 16 / 9 : 1,
               child: ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(4)),
                 child: Image.network(
                   product.image,
                   fit: BoxFit.cover,
@@ -68,7 +69,8 @@ class ProductCard extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(Icons.star, 
+                            Icon(
+                              Icons.star,
                               color: Colors.amber,
                               size: isDesktop ? 24 : 20,
                             ),
@@ -91,4 +93,4 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
-} 
+}

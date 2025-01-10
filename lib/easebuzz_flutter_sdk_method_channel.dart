@@ -13,9 +13,11 @@ class MethodChannelEasebuzzFlutterSDK extends EasebuzzFlutterSDKPlatform {
 
   @override
   Future<Map<String, dynamic>?> payWithEasebuzz(
-      String accessKey, String payMode,) async {
+    String accessKey,
+    String payMode,
+  ) async {
     try {
-       final requestParams = <String, dynamic>{
+      final requestParams = <String, dynamic>{
         'access_key': accessKey,
         'pay_mode': payMode,
       };
